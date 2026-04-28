@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "Session": {
+      "title": "Performance Session",
+      "description": "State of the current live session managed by the leader.",
+      "type": "object",
+      "properties": {
+        "sessionId": { "type": "string" },
+        "leaderId": { "type": "string" },
+        "currentSongId": { "type": "string" },
+        "scrollPosition": { "type": "number", "description": "Scroll percentage 0-100" },
+        "metronomeActive": { "type": "boolean" },
+        "bpm": { "type": "number" },
+        "lastUpdated": { "type": "number", "format": "timestamp" }
+      },
+      "required": ["sessionId", "leaderId"]
+    },
+    "Song": {
+      "title": "Band Song",
+      "description": "Song data in ChordPro format.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "artist": { "type": "string" },
+        "content": { "type": "string" },
+        "originalKey": { "type": "string" },
+        "bpm": { "type": "number" }
+      },
+      "required": ["title", "content"]
+    }
+  },
+  "firestore": {
+    "/sessions/{sessionId}": {
+      "schema": "Session",
+      "description": "Session coordinating state."
+    },
+    "/sessions/{sessionId}/songs/{songId}": {
+      "schema": "Song",
+      "description": "Songs in the current session setlist."
+    }
+  }
+}

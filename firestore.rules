@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    match /sessions/{sessionId} {
+      allow read: if true; // Band members join via ID
+      allow create, update: if true; // Simplified for MVP sync
+      
+      match /songs/{songId} {
+        allow read: if true;
+        allow write: if true;
+      }
+    }
+  }
+}

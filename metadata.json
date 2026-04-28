@@ -1,0 +1,14 @@
+{
+  "name": "Remix: BandSync Orchestrator",
+  "description": "Orquestrador de performance ao vivo com sincronia P2P, cifragem dinâmica ChordPro e interface de palco de alto contraste.",
+  "requestFramePermissions": [
+    "camera",
+    "screen-wake-lock"
+  ],
+  "majorCapabilities": [
+    "Real-time synchronization",
+    "Dynamic chord transposition",
+    "Offline-first database",
+    "QR pairing"
+  ]
+}
